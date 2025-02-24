@@ -1,0 +1,13 @@
+service: webhook-service
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+functions:
+  webhook:
+    handler: serverless.handler
+    events:
+      - http:
+          path: webhook
+          method: post
